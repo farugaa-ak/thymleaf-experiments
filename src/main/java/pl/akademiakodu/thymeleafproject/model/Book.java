@@ -1,6 +1,15 @@
 package pl.akademiakodu.thymeleafproject.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
 public class Book {
+
+    @Id
+    @GeneratedValue
+    Long id;
 
     String author;
     String title;
@@ -37,6 +46,10 @@ public class Book {
 
     public void setPrice(String price) {
         this.price = price;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     @Override
