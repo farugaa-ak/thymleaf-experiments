@@ -27,6 +27,7 @@ public class BookController {
     @GetMapping("/add")
     public String addBook(ModelMap modelMap){
         modelMap.addAttribute("book", new Book());
+        modelMap.addAttribute("books", bookRepository.getBooks());
         return "book/add";
     }
 
