@@ -24,6 +24,7 @@ All books:
     <li th:each="b: ${books}" th:text="|${b.author} - ${b.title} (${b.price})|">Book 1</li>
 </ul>
 
+<a href="book/add.html" th:href="@{/book/add}">Add book</a>
 
 
 </body>
