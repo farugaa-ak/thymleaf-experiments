@@ -18,7 +18,7 @@ public class BookService {
     private static final Logger log = LoggerFactory.getLogger(BookService.class);
 
     @Autowired
-    BookRepository bookCRUDRepository;
+    BookCRUDRepository bookCRUDRepository;
 
     public Book fineOne(Long id) {
         try {
@@ -47,5 +47,9 @@ public class BookService {
             throw new IllegalAccessException("artur is not allowed to save book");
         }
         return bookCRUDRepository.save(book);
+    }
+
+    public void delete(Long id) {
+        bookCRUDRepository.delete(id);
     }
 }
