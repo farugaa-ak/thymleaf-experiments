@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.akademiakodu.thymeleafproject.model.Book;
 import pl.akademiakodu.thymeleafproject.model.BookCRUDRepository;
+import pl.akademiakodu.thymeleafproject.model.BookRepository;
 
 import java.util.Collections;
 
@@ -17,7 +18,7 @@ public class BookService {
     private static final Logger log = LoggerFactory.getLogger(BookService.class);
 
     @Autowired
-    BookCRUDRepository bookCRUDRepository;
+    BookRepository bookCRUDRepository;
 
     public Book fineOne(Long id) {
         try {
