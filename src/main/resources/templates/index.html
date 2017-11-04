@@ -12,5 +12,7 @@ Witaj
 <h1 th:test="#{hello.message}"></h1>
 
 <a href="book/add.html" th:href="@{/book/add}">Add book</a>
+
+<div th:replace="fragments/footer :: footer"></div>
 </body>
 </html>

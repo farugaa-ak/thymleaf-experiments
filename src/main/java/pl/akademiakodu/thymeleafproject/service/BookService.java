@@ -19,6 +19,15 @@ public class BookService {
     @Autowired
     BookCRUDRepository bookCRUDRepository;
 
+    public Book fineOne(Long id) {
+        try {
+            return bookCRUDRepository.findOne(id);
+        } catch (Exception e){
+            log.error("Exception during finding book with id={}", id, e);
+            return Book.emptyBook();
+        }
+    }
+
     public Iterable<Book> findAll() {
         log.info("User is trying to get all books");
         try {

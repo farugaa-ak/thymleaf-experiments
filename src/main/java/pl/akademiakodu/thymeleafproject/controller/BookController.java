@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pl.akademiakodu.thymeleafproject.model.Book;
@@ -25,6 +26,12 @@ public class BookController {
     @GetMapping("/showall")
     public String showAllBooks(ModelMap modelMap) {
         modelMap.addAttribute("book", bookService.findAll());
+        return "book/showall";
+    }
+
+    @GetMapping("/show/{id}")
+    public String showAllBooks(@PathVariable Long id, ModelMap modelMap) {
+        modelMap.addAttribute("book", bookService.fineOne(id));
         return "book/showall";
     }
 

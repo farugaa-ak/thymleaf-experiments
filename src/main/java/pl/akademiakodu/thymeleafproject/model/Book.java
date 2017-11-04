@@ -7,6 +7,8 @@ import javax.persistence.Id;
 @Entity
 public class Book {
 
+    private static final Book EMPTY_BOOK = new Book("","","");
+
     @Id
     @GeneratedValue
     Long id;
@@ -50,6 +52,10 @@ public class Book {
 
     public Long getId() {
         return id;
+    }
+
+    public static Book emptyBook() {
+        return EMPTY_BOOK;
     }
 
     @Override
