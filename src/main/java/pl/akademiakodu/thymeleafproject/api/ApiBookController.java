@@ -20,7 +20,7 @@ import java.util.List;
 public class ApiBookController {
 
     @Autowired
-    BookService bookService;
+    private BookService bookService;
 
     @GetMapping(value = "/api/books" )
     @ResponseBody

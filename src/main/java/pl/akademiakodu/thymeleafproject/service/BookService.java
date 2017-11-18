@@ -33,7 +33,6 @@ public class BookService {
 
     public BookAsd fineOne(Long id) {
         try {
-
             return bookCRUDRepository.findOne(id);
         } catch (Exception e){
             log.error("Exception during finding book with id={}", id, e);

@@ -38,6 +38,22 @@ public class BookServiceTest {
         assertThat(book.getAuthor(), is("szlachetnaPaczka"));
     }
 
+    @Test
+    public void shouldFindEmptyBookWhenExceptionOccur(){
+        //given //argumenty , warunki dla testu
+        Long id = 10l;
+
+        given(mockBookCRUDRepository.findOne(id)).willThrow(new RuntimeException("error"));
+
+        //when
+        BookAsd book = bookService.fineOne(id);
+
+        //then
+        assertThat(book.getAuthor(), is(""));
+        assertThat(book.getTitle(), is(""));
+        assertThat(book.getPrice(), is(""));
+    }
+
 
 
 }

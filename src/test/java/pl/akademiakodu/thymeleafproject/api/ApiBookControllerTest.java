@@ -17,6 +17,7 @@ import java.util.List;
 
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.is;
+import static org.mockito.BDDMockito.given;
 import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -43,37 +44,16 @@ public class ApiBookControllerTest {
     }
 */
 
-
     @Test
-    public void greetingShouldReturnMessageFromService() throws Exception {
-        List<BookAsd> books = Arrays.asList(new BookAsd("author", "title", "price"));
-        when(bookService.findAll()).thenReturn(books);
+    public void shouldReturnJSONListWithAllBooks() throws Exception {
+        //given
+        List<BookAsd> bookAsdList = Arrays.asList(new BookAsd("Wladek", "asdf", "43"));
+        given(bookService.findAll()).willReturn(bookAsdList);
 
-        String writeValueAsString = new ObjectMapper().writeValueAsString(books);
-
-
-        this.mockMvc.perform(
-                get("/api/books"))
-                //.andDo(print())
-                .andExpect(status().isOk())
-                .andExpect(content().string(writeValueAsString))
+        //when & then
+        this.mockMvc.perform(get("/api/books"))
+                .andExpect(status().is(201))
                 .andExpect(jsonPath("$", hasSize(1)))
-                .andExpect(jsonPath("$[0].author", is("author")));
-    }
-
-    @Test
-    public void createBook() throws Exception {
-        BookAsd book = new BookAsd("author", "title", "price");
-
-        String jsonString = new ObjectMapper().writeValueAsString(book);
-
-        this.mockMvc.perform(post("/api/books")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(jsonString))
-                .andExpect(status().isCreated());
-
-        //and
-        verify(bookService).save(eq(book));
-
+                .andExpect(jsonPath("$[0].author", is("Wladek")));
     }
 }
