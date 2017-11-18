@@ -10,8 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
-import pl.akademiakodu.thymeleafproject.model.Book;
+import pl.akademiakodu.thymeleafproject.model.BookAsd;
 import pl.akademiakodu.thymeleafproject.service.BookService;
 
 import java.util.ArrayList;
@@ -25,9 +24,9 @@ public class ApiBookController {
 
     @GetMapping(value = "/api/books" )
     @ResponseBody
-    public List<Book> getAllBooks() {
-        List<Book> books = new ArrayList<>();
-        for (Book iterBook : bookService.findAll()) {
+    public List<BookAsd> getAllBooks() {
+        List<BookAsd> books = new ArrayList<>();
+        for (BookAsd iterBook : bookService.findAll()) {
             books.add(iterBook);
         }
         return books;
@@ -35,15 +34,15 @@ public class ApiBookController {
 
     @GetMapping(value = "/api/books/{id}" )
     @ResponseBody //Jackson librar
-    public Book getAllBooks(@PathVariable Long id) {
-        Book book = bookService.fineOne(id);
+    public BookAsd getAllBooks(@PathVariable Long id) {
+        BookAsd book = bookService.fineOne(id);
         return book; //serializcja do JSONA
     }
 
     @PostMapping(value = "api/books")
     @ResponseBody           // deserializacja z JSONA
     @ResponseStatus(HttpStatus.CREATED)
-    public void saveBook(@RequestBody Book book) throws IllegalAccessException {
+    public void saveBook(@RequestBody BookAsd book) throws IllegalAccessException {
         bookService.save(book);
     }
 

@@ -3,26 +3,25 @@ package pl.akademiakodu.thymeleafproject.model;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 @Component
 public class BookRepository {
 
-    List<Book> books = new ArrayList<>();
+    private List<BookAsd> books = new ArrayList<>();
 
-    public List<Book> getBooks() {
+    public List<BookAsd> getBooks() {
         return books;
     }
 
 
 
-    public void addBook(Book book) {
+    public void addBook(BookAsd book) {
         books.add(book);
     }
 
-    public Book findOne(Long id) {
-        for (Book book : books) {
+    public BookAsd findOne(Long id) {
+        for (BookAsd book : books) {
             if (book.getId().equals(id)) {
                 return book;
             }
@@ -30,11 +29,11 @@ public class BookRepository {
         throw new IllegalArgumentException("not found book");
     }
 
-    public List<Book> findAll() {
+    public List<BookAsd> findAll() {
         return books;
     }
 
-    public Book save(Book book) {
+    public BookAsd save(BookAsd book) {
         books.add(book);
         return book;
     }

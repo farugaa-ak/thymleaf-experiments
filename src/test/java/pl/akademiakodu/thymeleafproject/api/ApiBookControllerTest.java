@@ -1,7 +1,6 @@
 package pl.akademiakodu.thymeleafproject.api;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,8 +9,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import pl.akademiakodu.thymeleafproject.model.Book;
+import pl.akademiakodu.thymeleafproject.model.BookAsd;
 import pl.akademiakodu.thymeleafproject.service.BookService;
 
 import java.util.Arrays;
@@ -48,7 +46,7 @@ public class ApiBookControllerTest {
 
     @Test
     public void greetingShouldReturnMessageFromService() throws Exception {
-        List<Book> books = Arrays.asList(new Book("author", "title", "price"));
+        List<BookAsd> books = Arrays.asList(new BookAsd("author", "title", "price"));
         when(bookService.findAll()).thenReturn(books);
 
         String writeValueAsString = new ObjectMapper().writeValueAsString(books);
@@ -65,7 +63,7 @@ public class ApiBookControllerTest {
 
     @Test
     public void createBook() throws Exception {
-        Book book = new Book("author", "title", "price");
+        BookAsd book = new BookAsd("author", "title", "price");
 
         String jsonString = new ObjectMapper().writeValueAsString(book);
 

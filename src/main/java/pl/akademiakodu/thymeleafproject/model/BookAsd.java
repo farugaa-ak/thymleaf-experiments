@@ -6,9 +6,9 @@ import javax.persistence.Id;
 import java.util.Objects;
 
 @Entity
-public class Book {
+public class BookAsd {
 
-    private static final Book EMPTY_BOOK = new Book("","","");
+    private static final BookAsd EMPTY_BOOK = new BookAsd("","","");
 
     @Id
     @GeneratedValue
@@ -18,10 +18,10 @@ public class Book {
     String title;
     String price;
 
-    public Book() {
+    public BookAsd() {
     }
 
-    public Book(String author, String title, String price) {
+    public BookAsd(String author, String title, String price) {
         this.author = author;
         this.title = title;
         this.price = price;
@@ -55,13 +55,13 @@ public class Book {
         return id;
     }
 
-    public static Book emptyBook() {
+    public static BookAsd emptyBook() {
         return EMPTY_BOOK;
     }
 
     @Override
     public String toString() {
-        return "Book{" +
+        return "BookAsd{" +
                 "author='" + author + '\'' +
                 ", title='" + title + '\'' +
                 ", price='" + price + '\'' +
@@ -72,7 +72,7 @@ public class Book {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Book book = (Book) o;
+        BookAsd book = (BookAsd) o;
         return Objects.equals(id, book.id) &&
                 Objects.equals(author, book.author) &&
                 Objects.equals(title, book.title) &&

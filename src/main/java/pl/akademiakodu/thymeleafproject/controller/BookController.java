@@ -10,8 +10,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import pl.akademiakodu.thymeleafproject.model.Book;
+import pl.akademiakodu.thymeleafproject.model.BookAsd;
 import pl.akademiakodu.thymeleafproject.service.BookService;
+
+import java.awt.print.Book;
 
 @Controller
 @RequestMapping("/book")
@@ -20,7 +22,7 @@ public class BookController {
     private static final Logger log = LoggerFactory.getLogger(BookController.class);
 
     @Autowired
-    BookService bookService;
+    private BookService bookService;
 
     //class mapping + method mapping "/book/showall"
     @GetMapping("/showall")
@@ -37,16 +39,16 @@ public class BookController {
 
     @GetMapping("/add")
     public String addBook(ModelMap modelMap) {
-        modelMap.addAttribute("book", new Book());
-        modelMap.addAttribute("books", bookService.findAll());
+        modelMap.addAttribute("bookAttr", new BookAsd());
+        modelMap.addAttribute("booksAttributeModel", bookService.findAll());
         return "book/add";
     }
 
     @PostMapping("/add")
-    public String createBook(@ModelAttribute Book book) {
-        log.info("I'm creating book={}", book);
+    public String createBook(@ModelAttribute BookAsd bookAttribute) {
+        log.info("I'm creating book={}", bookAttribute);
         try {
-            bookService.save(book);
+            bookService.save(bookAttribute);
         } catch (IllegalAccessException e) {
             log.error("Saving book operation failed", e);
         }
