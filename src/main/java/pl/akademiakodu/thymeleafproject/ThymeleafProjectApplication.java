@@ -10,3 +10,35 @@ public class ThymeleafProjectApplication {
 		SpringApplication.run(ThymeleafProjectApplication.class, args);
 	}
 }
+
+
+class Dziadek{
+	private String madrosc;
+
+	public String getMadrosc() {
+		return madrosc;
+	}
+}
+
+class Ojciec {
+	private String sila;
+
+	public String getSila() {
+		return sila;
+	}
+}
+
+class Wnuk {
+
+	private Dziadek dziadek;
+	private Ojciec ojciec;
+
+	protected String lekkomyslnosc;
+
+	void testThis(){
+		dziadek.getMadrosc();
+		ojciec.getSila();
+	}
+}
+
+
