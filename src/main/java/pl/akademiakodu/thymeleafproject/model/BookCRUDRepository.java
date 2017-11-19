@@ -2,7 +2,7 @@ package pl.akademiakodu.thymeleafproject.model;
 
 import org.springframework.data.repository.CrudRepository;
 
-public interface BookCRUDRepository extends CrudRepository<BookAsd, Long>{
+public interface BookCRUDRepository extends CrudRepository<Book, Long>{
 
     /*
 count() - zliczailość rekordó w danym repozytorium (ilość rekordów w bazie danych)

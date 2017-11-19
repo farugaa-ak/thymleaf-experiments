@@ -3,8 +3,7 @@ package pl.akademiakodu.thymeleafproject.service;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
-import pl.akademiakodu.thymeleafproject.model.BookAsd;
-import pl.akademiakodu.thymeleafproject.model.BookCRUDRepository;
+import pl.akademiakodu.thymeleafproject.model.Book;
 import pl.akademiakodu.thymeleafproject.model.BookRepository;
 
 import static org.hamcrest.Matchers.is;
@@ -15,12 +14,11 @@ public class BookServiceTest {
 
     private BookService bookService;
 
-    private BookCRUDRepository mockBookCRUDRepository = Mockito.mock(BookCRUDRepository.class);
     private BookRepository mockBookRepository = Mockito.mock(BookRepository.class);;
 
     @Before
     public void setup() {
-        bookService = new BookService(mockBookCRUDRepository, mockBookRepository);
+        bookService = new BookService(mockBookRepository);
     }
 
     @Test //bdd
@@ -28,32 +26,15 @@ public class BookServiceTest {
         //given //argumenty , warunki dla testu
         Long id = 10l;
 
-        BookAsd bookAsd = new BookAsd("szlachetnaPaczka", "t", "9");
-        given(mockBookCRUDRepository.findOne(id)).willReturn(bookAsd);
+        Book bookAsd = new Book("szlachetnaPaczka", "t", "9");
+        given(mockBookRepository.findOne(id)).willReturn(bookAsd);
 
         //when
-        BookAsd book = bookService.fineOne(id);
+        Book book = bookService.fineOne(id);
 
         //then
         assertThat(book.getAuthor(), is("szlachetnaPaczka"));
     }
-
-    @Test
-    public void shouldFindEmptyBookWhenExceptionOccur(){
-        //given //argumenty , warunki dla testu
-        Long id = 10l;
-
-        given(mockBookCRUDRepository.findOne(id)).willThrow(new RuntimeException("error"));
-
-        //when
-        BookAsd book = bookService.fineOne(id);
-
-        //then
-        assertThat(book.getAuthor(), is(""));
-        assertThat(book.getTitle(), is(""));
-        assertThat(book.getPrice(), is(""));
-    }
-
 
 
 }

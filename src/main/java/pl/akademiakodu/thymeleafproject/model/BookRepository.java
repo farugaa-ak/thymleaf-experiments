@@ -8,20 +8,20 @@ import java.util.List;
 @Component
 public class BookRepository {
 
-    private List<BookAsd> books = new ArrayList<>();
+    private List<Book> books = new ArrayList<>();
 
-    public List<BookAsd> getBooks() {
+    public List<Book> getBooks() {
         return books;
     }
 
 
 
-    public void addBook(BookAsd book) {
+    public void addBook(Book book) {
         books.add(book);
     }
 
-    public BookAsd findOne(Long id) {
-        for (BookAsd book : books) {
+    public Book findOne(Long id) {
+        for (Book book : books) {
             if (book.getId().equals(id)) {
                 return book;
             }
@@ -29,11 +29,11 @@ public class BookRepository {
         throw new IllegalArgumentException("not found book");
     }
 
-    public List<BookAsd> findAll() {
+    public List<Book> findAll() {
         return books;
     }
 
-    public BookAsd save(BookAsd book) {
+    public Book save(Book book) {
         books.add(book);
         return book;
     }

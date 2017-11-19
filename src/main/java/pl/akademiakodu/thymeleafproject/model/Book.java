@@ -3,12 +3,13 @@ package pl.akademiakodu.thymeleafproject.model;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import java.util.Objects;
 
 @Entity
-public class BookAsd {
+public class Book {
 
-    private static final BookAsd EMPTY_BOOK = new BookAsd("","","");
+    private static final Book EMPTY_BOOK = new Book("","","");
 
     @Id
     @GeneratedValue
@@ -18,10 +19,10 @@ public class BookAsd {
     String title;
     String price;
 
-    public BookAsd() {
+    public Book() {
     }
 
-    public BookAsd(String author, String title, String price) {
+    public Book(String author, String title, String price) {
         this.author = author;
         this.title = title;
         this.price = price;
@@ -55,13 +56,13 @@ public class BookAsd {
         return id;
     }
 
-    public static BookAsd emptyBook() {
+    public static Book emptyBook() {
         return EMPTY_BOOK;
     }
 
     @Override
     public String toString() {
-        return "BookAsd{" +
+        return "Book{" +
                 "author='" + author + '\'' +
                 ", title='" + title + '\'' +
                 ", price='" + price + '\'' +
@@ -72,7 +73,7 @@ public class BookAsd {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        BookAsd book = (BookAsd) o;
+        Book book = (Book) o;
         return Objects.equals(id, book.id) &&
                 Objects.equals(author, book.author) &&
                 Objects.equals(title, book.title) &&

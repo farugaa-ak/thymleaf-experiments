@@ -10,10 +10,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import pl.akademiakodu.thymeleafproject.model.BookAsd;
+import pl.akademiakodu.thymeleafproject.model.Book;
 import pl.akademiakodu.thymeleafproject.service.BookService;
-
-import java.awt.print.Book;
 
 @Controller
 @RequestMapping("/book")
@@ -39,13 +37,13 @@ public class BookController {
 
     @GetMapping("/add")
     public String addBook(ModelMap modelMap) {
-        modelMap.addAttribute("bookAttr", new BookAsd());
+        modelMap.addAttribute("bookAttr", new Book());
         modelMap.addAttribute("booksAttributeModel", bookService.findAll());
         return "book/add";
     }
 
     @PostMapping("/add")
-    public String createBook(@ModelAttribute BookAsd bookAttribute) {
+    public String createBook(@ModelAttribute Book bookAttribute) {
         log.info("I'm creating book={}", bookAttribute);
         try {
             bookService.save(bookAttribute);
